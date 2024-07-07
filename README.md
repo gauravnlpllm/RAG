@@ -21,7 +21,13 @@ For example you could use RAG for: <br/>
 All of these have the common theme of retrieving relevant resources and then presenting them in an understandable way using an LLM.
 
 Slide 3: RAG Architecure <br/>
-Prior to answering any question about a given document, the document is split into chunks and the chunks are indexed into a vector database (vectordb). When a question is sent to the RAG system, the top-k chunks most similar to the question are retrieved from the vector database and used to generate the answer using a large language model as generator. In order to retrieve chunks from the vector database, the question is encoded into a vector that is compared to the vector previously generated from the chunks. To prompt the generator, the question is converted into a set of instructions that instruct the LLM to find the answer within the top-k retrieved chunks.
+Prior to answering any question about a given document, the document is split into chunks and the chunks are indexed into a vector database (vectordb). When a question is sent to the RAG system, the top-k chunks most similar to the question are retrieved from the vector database and used to generate the answer using a large language model as generator. In order to retrieve chunks from the vector database, the question is encoded into a vector that is compared to the vector previously generated from the chunks. To prompt the generator, the question is converted into a set of instructions that instruct the LLM to find the answer within the top-k retrieved chunks.<br/>
+Slide 4 and 5: <br/>
+Simply chunking and embedding documents in a database and then using plain vector similarity search won’t hit the mark for multi-hop questions. Here’s why: <br/>
+
+Repeated information in top N documents: The provided documents aren’t guaranteed to contain all the information required to answer a question fully. For example, the top three similar documents might all mention that Shariq worked at OpenAI and possibly founded a company while ignoring all the other former employees who became founders.<br/>
+Missing reference information: Depending on the chunk sizes, some chunks might not contain the full context or references to the entities mentioned in the text. Overlapping the chunks can partially mitigate the issue of missing references. There are also examples where the references point to another document, so you need a co-reference resolution or preprocessing technique.<br/>
+Hard to define the ideal N number of retrieved documents: Some questions require more documents for an LLM to be accurate, while in other situations, a large number of documents would only increase the noise (and cost).<br/>
 
 
 
