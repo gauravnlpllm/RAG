@@ -20,7 +20,9 @@ For example you could use RAG for: <br/>
 •	Textbook Q&A - Let's say you're studying for your exams and constantly flicking through a large textbook looking for answers to your quesitons. RAG can help provide answers as well as references to learn more. <br/>
 All of these have the common theme of retrieving relevant resources and then presenting them in an understandable way using an LLM.
 
-Slide 3:
+Slide 3: RAG Architecure <br/>
+Prior to answering any question about a given document, the document is split into chunks and the chunks are indexed into a vector database (vectordb). When a question is sent to the RAG system, the top-k chunks most similar to the question are retrieved from the vector database and used to generate the answer using a large language model as generator. In order to retrieve chunks from the vector database, the question is encoded into a vector that is compared to the vector previously generated from the chunks. To prompt the generator, the question is converted into a set of instructions that instruct the LLM to find the answer within the top-k retrieved chunks.
+
 
 
 
