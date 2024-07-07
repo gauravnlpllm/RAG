@@ -1,6 +1,6 @@
 # RAG
 RAG documentation and code snipptes
-Slide1: What is RAG
+Slide1: What is RAG<br/>
 RAG stands for Retrieval Augmented Generation. It was introduced in the paper Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.
 Each step can be roughly broken down to:
 •	Retrieval - Seeking relevant information from a source given a query. For example, getting relevant passages of Wikipedia text from a database given a question.
